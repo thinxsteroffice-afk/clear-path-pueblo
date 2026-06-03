@@ -1,0 +1,21 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/review",
+      "destination": "https://www.google.com/maps/search/?api=1&query=ClearPath+Junk+Removal+LLC+Pueblo+West+CO",
+      "permanent": false
+    },
+    {
+      "source": "/reviews",
+      "destination": "https://www.google.com/maps/search/?api=1&query=ClearPath+Junk+Removal+LLC+Pueblo+West+CO",
+      "permanent": false
+    },
+    {
+      "source": "/quote",
+      "destination": "/#quote",
+      "permanent": false
+    }
+  ]
+}
