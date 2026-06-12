@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://clear-path-pueblo.vercel.app/sitemap.xml
+Sitemap: https://clearpathjunkremovalcolorado.com/sitemap.xml
