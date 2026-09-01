@@ -190,13 +190,83 @@ footer .nap{margin:0.3rem 0}
     <p style="color:#cbd5e1;max-width:760px;margin-bottom:2rem">Tell us what you've got and where it is. We'll text back fast with an honest, upfront quote — no surprise charges, no high-pressure scripts.</p>
     <div style="display:grid;grid-template-columns:1fr;gap:2rem" class="quote-grid">
       <div class="form-wrap">
-        <iframe
-          src="https://api.leadconnectorhq.com/widget/survey/aHY4O6c5nBqcf9YdDcGi"
-          style="border:none;width:100%;"
-          scrolling="no"
-          id="aHY4O6c5nBqcf9YdDcGi"
-          title="survey"
-        ></iframe>
+        <!-- Native form -> /api/lead -> this business's own GHL sub-account.
+             Replaced a GoHighLevel survey widget that was not owned by this
+             location, so its submissions never reached the CRM (0 leads / 30 days). -->
+        <form id="quote-form" novalidate style="display:grid;gap:.9rem">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:.9rem" class="qf-row">
+            <label style="display:grid;gap:.35rem">
+              <span style="font-weight:600;font-size:.9rem">Name *</span>
+              <input name="name" required autocomplete="name" placeholder="Your name"
+                     style="padding:.8rem;border-radius:.5rem;border:1px solid #cbd5e1;font:inherit;width:100%">
+            </label>
+            <label style="display:grid;gap:.35rem">
+              <span style="font-weight:600;font-size:.9rem">Phone *</span>
+              <input name="phone" required type="tel" autocomplete="tel" placeholder="(719) 555-0123"
+                     style="padding:.8rem;border-radius:.5rem;border:1px solid #cbd5e1;font:inherit;width:100%">
+            </label>
+          </div>
+          <label style="display:grid;gap:.35rem">
+            <span style="font-weight:600;font-size:.9rem">Email</span>
+            <input name="email" type="email" autocomplete="email" placeholder="you@example.com"
+                   style="padding:.8rem;border-radius:.5rem;border:1px solid #cbd5e1;font:inherit;width:100%">
+          </label>
+          <label style="display:grid;gap:.35rem">
+            <span style="font-weight:600;font-size:.9rem">What needs hauling?</span>
+            <input name="job" placeholder="Garage cleanout, hot tub, yard debris…"
+                   style="padding:.8rem;border-radius:.5rem;border:1px solid #cbd5e1;font:inherit;width:100%">
+          </label>
+          <label style="display:grid;gap:.35rem">
+            <span style="font-weight:600;font-size:.9rem">Address or area</span>
+            <input name="address" autocomplete="street-address" placeholder="Pueblo West, CO"
+                   style="padding:.8rem;border-radius:.5rem;border:1px solid #cbd5e1;font:inherit;width:100%">
+          </label>
+          <label style="display:grid;gap:.35rem">
+            <span style="font-weight:600;font-size:.9rem">Anything else?</span>
+            <textarea name="details" rows="3" placeholder="Stairs, heavy items, timing…"
+                      style="padding:.8rem;border-radius:.5rem;border:1px solid #cbd5e1;font:inherit;width:100%"></textarea>
+          </label>
+          <button type="submit" class="btn-primary" style="padding:.95rem;font-size:1.05rem;border:none;cursor:pointer">
+            Get My Free Quote
+          </button>
+          <p id="quote-msg" role="status" aria-live="polite" style="margin:0;font-size:.92rem"></p>
+        </form>
+        <script>
+        (function () {
+          var f = document.getElementById('quote-form');
+          var msg = document.getElementById('quote-msg');
+          if (!f) return;
+          f.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var btn = f.querySelector('button[type=submit]');
+            var d = Object.fromEntries(new FormData(f).entries());
+            if (!d.name || !d.phone) {
+              msg.style.color = '#b91c1c';
+              msg.textContent = 'Please add your name and a phone number so we can text you back.';
+              return;
+            }
+            btn.disabled = true; btn.textContent = 'Sending…';
+            msg.style.color = '#475569'; msg.textContent = '';
+            fetch('/api/lead', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(d)
+            }).then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
+              .then(function (res) {
+                if (!res.ok || !res.j.success) throw new Error(res.j.error || 'failed');
+                f.reset();
+                msg.style.color = '#15803d';
+                msg.textContent = "Got it — we'll text you back shortly with your quote.";
+                btn.textContent = 'Sent';
+              })
+              .catch(function () {
+                btn.disabled = false; btn.textContent = 'Get My Free Quote';
+                msg.style.color = '#b91c1c';
+                msg.innerHTML = "That didn't go through. Please call or text <a href=\"tel:+17193344581\">(719) 334-4581</a>.";
+              });
+          });
+        })();
+        </script>
       </div>
       <div style="display:flex;flex-direction:column;gap:1rem">
         <div class="card">
