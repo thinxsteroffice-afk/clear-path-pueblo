@@ -89,6 +89,34 @@ footer .nap{margin:0.3rem 0}
 @media(max-width:640px){h1{font-size:2.6rem}h2{font-size:2.1rem}body{padding-bottom:64px}.mobile-bar{display:flex}}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ItemList", "name": "ClearPath Junk Removal LLC Areas Served", "itemListElement": [{"@type": "ListItem", "position": 1, "url": "https://clearpathjunkremovalcolorado.com/areas/pueblo", "name": "Pueblo"}, {"@type": "ListItem", "position": 2, "url": "https://clearpathjunkremovalcolorado.com/areas/pueblo-west", "name": "Pueblo West"}, {"@type": "ListItem", "position": 3, "url": "https://clearpathjunkremovalcolorado.com/areas/avondale", "name": "Avondale"}, {"@type": "ListItem", "position": 4, "url": "https://clearpathjunkremovalcolorado.com/areas/canon-city", "name": "Ca\u00f1on City"}, {"@type": "ListItem", "position": 5, "url": "https://clearpathjunkremovalcolorado.com/areas/colorado-city", "name": "Colorado City"}, {"@type": "ListItem", "position": 6, "url": "https://clearpathjunkremovalcolorado.com/areas/rye", "name": "Rye"}, {"@type": "ListItem", "position": 7, "url": "https://clearpathjunkremovalcolorado.com/areas/penrose", "name": "Penrose"}, {"@type": "ListItem", "position": 8, "url": "https://clearpathjunkremovalcolorado.com/areas/florence", "name": "Florence"}, {"@type": "ListItem", "position": 9, "url": "https://clearpathjunkremovalcolorado.com/areas/beulah", "name": "Beulah"}]}</script>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NQX4X0Z339"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NQX4X0Z339');
+  (function(){
+    function lead(method, extra){
+      gtag('event', 'generate_lead', Object.assign({
+        method: method, page_path: location.pathname
+      }, extra || {}));
+    }
+    document.addEventListener('click', function(e){
+      var a = e.target && e.target.closest && e.target.closest('a[href^="tel:"],a[href^="sms:"]');
+      if (!a) return;
+      lead(a.getAttribute('href').indexOf('sms:') === 0 ? 'text' : 'call',
+           { link_url: a.getAttribute('href') });
+    }, true);
+    // The GHL form/survey lives in a cross-origin iframe, so a submit is only
+    // observable through the message it posts back to the parent window.
+    window.addEventListener('message', function(e){
+      if (!e.origin || e.origin.indexOf('leadconnectorhq.com') === -1) return;
+      var raw = typeof e.data === 'string' ? e.data : JSON.stringify(e.data || '');
+      if (/submit|submission|thank|complete/i.test(raw)) lead('form');
+    });
+  })();
+</script>
 </head><body><header><div class="container nav">
   <a href="/" class="logo">🚛 <span>CLEAR<span class="green">PATH</span></span></a>
   <nav class="nav-links">
