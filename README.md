@@ -1,6 +1,6 @@
 # ClearPath Junk Removal — Pueblo / Pueblo West
 
-Optimized static site for **ClearPath Junk Removal LLC** (5.0★ × 115 Google reviews · Pueblo West, CO).
+Optimized static site for **ClearPath Junk Removal LLC** (5.0★ × 332 Google reviews · Pueblo West, CO).
 
 - 1 homepage with GHL form embed
 - 6 service pages (`/services/<slug>`)
@@ -28,7 +28,7 @@ Optimized static site for **ClearPath Junk Removal LLC** (5.0★ × 115 Google r
 - `~/clear-path-citations/` — NAP citation submission queue + GHL workflow setup guide
 
 ## Owner notes
-- GBP: 5.0★ × 115 reviews (Jun 2026) · Place: ClearPath Junk Removal LLC
+- GBP: 5.0★ × 332 reviews (Jun 2026) · Place: ClearPath Junk Removal LLC
 - NAP: 291 W Northampton Dr, Pueblo West, CO 81007 · (719) 334-4581
 - Email: Pmann_1@me.com
 - Geo: 38.298325, -104.754343
